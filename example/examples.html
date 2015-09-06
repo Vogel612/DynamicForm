@@ -14,10 +14,12 @@
     <script src="../src/DynamicForm.js"></script>
     <script>
       window.onload = function() {
-        var df = DynamicForm(document.getElementById('df-parent-0'), {}, {
+        var df = DynamicForm(document.getElementById('df-parent-0'), {
+          defaultClass : 'df-input'
+        }, {
           inputs: [
-            {type : 'text', className : 'df-input', nametemplate : 'ele-%INDEX%'}
-            , {type : 'checkbox', className : 'df-input', nametemplate : 'cb-%INDEX%'}
+            {type : 'text', nametemplate : 'ele-%INDEX%'}
+            , {type : 'checkbox', nametemplate : 'cb-%INDEX%'}
           ]
         });
         df.add();

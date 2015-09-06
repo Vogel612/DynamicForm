@@ -29,12 +29,12 @@ function DynamicForm(parent, coreConfig, formOptions) {
   var inputOpts = formOptions.inputs;
 
   var self = {
-    add: function() {
+    add: function () {
       var newRow = tbody.insertRow(-1);
       addInputs(newRow);
       organizeForm();
-    },
-    remove: function(node) {
+    }
+    , remove: function (node) {
       if (tbody.children.length == 1) {
         return false;
       }
@@ -45,21 +45,23 @@ function DynamicForm(parent, coreConfig, formOptions) {
   };
 
   // run that for each field actually..
-  var addInputs = function(tableRow) {
+  var addInputs = function (tableRow) {
     // iterate over configurated inputs
-    for (var config of inputOpts) {
+    for (
+      var config of inputOpts) {
       var cell = tableRow.insertCell(-1);
       // FIXME: correct the behaviour..
       var input = document.createElement("INPUT");
       input.type = config.type;
-      input.className = config.classname;
+      input.className = config.classname === undefined ? coreConfig.defaultClass :
+        config.className;
       input.name = config.nametemplate;
 
       cell.appendChild(input);
     }
   };
 
-  var organizeForm = function() {
+  var organizeForm = function () {
     var rows = tbody.children;
     for (var r = 0; r < rows.length; r++) {
       while (rows[r].childElementCount > inputOpts.length) {
@@ -68,7 +70,7 @@ function DynamicForm(parent, coreConfig, formOptions) {
       var cell = rows[r].insertCell(-1);
       var remove = new Image();
       remove.src = remove_icon;
-      remove.onclick = function() {
+      remove.onclick = function () {
         self.remove(this.parentElement.parentElement); // remove row on click!
       }
       cell.appendChild(remove);
@@ -76,7 +78,7 @@ function DynamicForm(parent, coreConfig, formOptions) {
       if (r == rows.length - 1) {
         var add = new Image();
         add.src = add_icon;
-        add.onclick = function() {
+        add.onclick = function () {
           self.add();
         }
         cell.appendChild(add);
