@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <style media="screen">
+        img {
+          margin: 5px;
+        }
+
+        .df-input {
+          padding: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <script src="../src/DynamicForm.js"></script>
+    <script>
+      window.onload = function() {
+        var df = DynamicForm(document.getElementById('df-parent-0'), {}, {
+          inputs: [
+            {type : 'text', className : 'df-input', nametemplate : 'ele-%INDEX%'}
+            , {type : 'checkbox', className : 'df-input', nametemplate : 'cb-%INDEX%'}
+          ]
+        });
+        df.add();
+      };
+    </script>
+    This is some random content :D
+    <form action="#" name="example">
+      <table id="df-parent-0">
+        <tbody>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>
