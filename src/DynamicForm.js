@@ -9,14 +9,14 @@ function DynamicForm(parent, formOptions) {
     console.warn("Cannot create a DynamicForm without a structure to bind to");
     return false;
   }
+  // FIXME if confic contains these, use that instead
+  var add_icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACyUlEQVR42q2UTWgTQRTH/7NJiujBY0HqByJqFRVEoaAIEUEoiLXEUrGFKh5qFamg4sGb54IgiiD05EFFi7TgSa2aRk0/Y2mKlopapcQ2281Ho202s+Pb2WySBdsI3cDwJm/f/H/vY3YZyvwOdm4RletXwVvhc/hzWR2/fiyg7+wkW+78sg9tQHt9LTavrXL4v6dj6HjSvXLA3nsbxPXGOkTnHjj8yYyCt6HVGG6dcgHQcAITqccOv5YCet/53AFcC9Rjcv6R/C9oGQYQTwKhsEuAKwT4QgBTmNMyhIJ4Augf8rgEqD+OT6kuErYqMCFxDRiOuAS4dKwOn+efkjiTELOSGZVjLPofLTKvYTnIuaO1GE935dtDVZCdS3CawWK5o2D+zp3ixhk/phPfIJhCIswapBRSILiCcTVEuXulsAFFWp0CFrnA7soa8hmFyuRZDnh9Hjx8HgY7dL9anD+1FZHpEB31WEGCQacgMnLPaKgGPStUAEvMEAKclkEgI+8TJoj2CiU0+CENduButWhr2kGAPsrS5wjiMiMlL1YUtmchgbBaBlHcm/ZPVsHYQBKs5vZ20da8CyM/g1CYtyhsKFZWpcJUDbezt9uRn2DOsG6MlZwC+lTh43sC7L9lAYYJwJSKQgalwlywYltKhO1YlAgb0sGR43SFgwTY17FNHPFvRHQ6uuRN2FPpx5QRdAjHYjn5bE3Fv89kssDEaAas+uYmkU5llxTXfs/hcksAX3nQkfEMAcIv1fLXtFxA1dV1oqXhMCZ1uwJFUtTZrARk7iys7E02Ae0tJxFOdBf6a/ZbVQ0Mvoi7A7jQHMBg8ll+kB5ZiTarY+iVS4C20wH0p3qksD0ElQAjr10CtDYFMKD1wNY3h63FdUTeuAWgCsKJHsct0mZ0jAZdAlxsbkSIZiAryL+5CQJEemfdAZg2nU0WWiRtjktbDvAXpTXf5N+BV58AAAAASUVORK5CYII=';
+  var remove_icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABqElEQVR42u1TO0sDQRD+NsFGBEubxNI/YC/YWPiKqNHK3ka0s/EXWWjjT9BCfDQiEhUshCghL9AYvdvdcfZmL3cGBUFSCHewzM3OzPfNaxUG/KmMICP4BwQ0NUMojgHG/iIH6rPRVz+bus/lgGqNCcrrhN0NoF5jn1zib32wDdmfg8nInfaSSKS1AvjhJB+ywptneXDGBPMlwtYSULkSVpdJFOz8AwF3ID1Ah6e5YkdmE1Jnd10w/K85qTxjXTxDBXOLNLS9DNxe82WeA5QAdN+ATkcqC5mo1eJgtjXrDAAhDY3IuJLQV2cQVfJ+14bqzC7Q8E6ZCW6AWpUB+TQaTNAV59D1yUjm2rcmAtI+GTYEMbAjIamO9dYDE7RLKzS6Ogkc7XMftfQvAiEB1pS0w3wDbDxw7BdaT8AzfnqBeiwUqbA5DZyeywyCUIar47LJA8dD9vpPwLHO6n3zFaoyMkITe2vA8YkbfdLPwA8yBo4AbAIcenCdaov2i+B0rXHZ1VCHvEjjvJ7GrWFqs9MbbvtkbKfevfK68oei19OOLIN+yRlBRvDn7xOEbDnnrmtLswAAAABJRU5ErkJggg==';
 
   // FIXME: add a way to use nested divs
   var tbody = parent.childElements('tbody')[0];
   var inputOpts = formOptions.inputs;
 
-  // FIXME base64 encoded image, please
-  var add_icon = 'resource/add.png';
-  var remove_icon = 'resource/remove.png';
 
   var self = {
       add: function() {
